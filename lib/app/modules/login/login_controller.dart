@@ -1,7 +1,9 @@
 import 'package:app_airbnb/app/core/theme/app_theme.dart';
 import 'package:app_airbnb/app/data/models/request_token.dart';
 import 'package:app_airbnb/app/data/repositories/auth_repository.dart';
+import 'package:app_airbnb/app/data/repositories/local/storage_repository.dart';
 import 'package:app_airbnb/app/global/load_spinner.dart';
+import 'package:app_airbnb/app/global/snackbar.dart';
 import 'package:app_airbnb/app/routes/app_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   //Repositories
   final _authRepository = Get.find<AuthRepository>();
+  final _storageRepository = Get.find<StorageRepository>();
 
   //Instancias
   RequestToken _oRequestToken = RequestToken();
@@ -48,17 +51,15 @@ class LoginController extends GetxController {
       );
       LoadSpinner.hide();
       if (_oRequestToken.success == true) {
+        await _storageRepository.setSession(request: _oRequestToken);
         Get.offNamedUntil(AppRoutes.HOME, (_) => false);
       }
     } on DioError catch (e) {
       LoadSpinner.hide();
-      Get.snackbar(
-        "Message",
-        e.response?.data["message"],
-        backgroundColor: AppTheme.cyan,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: Duration(seconds: 3),
+      Snackbar.show(
+        title: "Error",
+        message: e.response?.data["message"],
+        type: 1,
       );
     }
   }
