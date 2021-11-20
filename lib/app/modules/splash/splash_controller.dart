@@ -15,7 +15,6 @@ class SplashController extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -24,7 +23,6 @@ class SplashController extends GetxController {
       Duration(seconds: 2),
       () {
         Get.offNamed(AppRoutes.LOGIN);
-        //Get.toNamed(AppRoutes.LOGIN);
       },
     );
   }

@@ -4,6 +4,7 @@ import 'package:app_airbnb/app/data/repositories/auth_repository.dart';
 import 'package:app_airbnb/app/data/repositories/local/storage_repository.dart';
 import 'package:app_airbnb/app/global/load_spinner.dart';
 import 'package:app_airbnb/app/global/snackbar.dart';
+import 'package:app_airbnb/app/modules/login/login_page.dart';
 import 'package:app_airbnb/app/routes/app_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,8 @@ class LoginController extends GetxController {
   RequestToken _oRequestToken = RequestToken();
 
   //Variables
-  late String _email = ""; // = "gqcrispin@gmail.com";
-  late String _password = ""; // = "123456";
+  late String _email = "gqcrispin@gmail.com"; // = "gqcrispin@gmail.com";
+  late String _password = "123456"; // = "123456";
 
   @override
   void onInit() {

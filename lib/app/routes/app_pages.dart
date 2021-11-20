@@ -1,3 +1,5 @@
+import 'package:app_airbnb/app/modules/detail/detail_binding.dart';
+import 'package:app_airbnb/app/modules/detail/detail_page.dart';
 import 'package:app_airbnb/app/modules/home/home_binding.dart';
 import 'package:app_airbnb/app/modules/home/home_page.dart';
 import 'package:app_airbnb/app/modules/login/login_binding.dart';
@@ -22,14 +24,19 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
+      name: AppRoutes.SIGNUP,
+      page: () => SignupPage(),
+      binding: SignupBinding(),
+    ),
+    GetPage(
       name: AppRoutes.HOME,
       page: () => HomePage(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: AppRoutes.SIGNUP,
-      page: () => SignupPage(),
-      binding: SignupBinding(),
+      name: AppRoutes.DETAIL,
+      page: () => DetailPage(),
+      binding: DetailBinding(),
     ),
   ];
 }

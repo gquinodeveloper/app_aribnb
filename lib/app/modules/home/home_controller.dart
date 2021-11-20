@@ -1,5 +1,7 @@
+import 'package:app_airbnb/app/data/models/house_model.dart';
 import 'package:app_airbnb/app/data/models/request_token.dart';
 import 'package:app_airbnb/app/data/models/user_model.dart';
+import 'package:app_airbnb/app/data/repositories/house_repository.dart';
 import 'package:app_airbnb/app/data/repositories/local/storage_repository.dart';
 import 'package:app_airbnb/app/data/repositories/user_repository.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,7 @@ class HomeController extends GetxController {
   //Repositories
   final _userRepository = Get.find<UserRepository>();
   final _storageRepository = Get.find<StorageRepository>();
+  final _houseRepository = Get.find<HouseRepository>();
 
   //Instancias
   RequestToken _oRequestToken = RequestToken();
@@ -15,7 +18,10 @@ class HomeController extends GetxController {
   //Variables
   List<UserModel> users = [];
   RxString name = RxString("");
-  RxString adress = RxString("");
+  RxString address = RxString("");
+  RxInt _isSelectedIndex = RxInt(0);
+  RxInt get isSelectedIndex => _isSelectedIndex;
+  RxList<HouseModel> houses = RxList<HouseModel>([]);
 
   @override
   void onInit() {
@@ -25,7 +31,6 @@ class HomeController extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
     super.onReady();
   }
 
@@ -33,6 +38,10 @@ class HomeController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+  }
+
+  selectedIndex(int index) {
+    isSelectedIndex.value = index;
   }
 
   _loadStorage() async {
@@ -43,6 +52,20 @@ class HomeController extends GetxController {
     );
 
     name.value = users[0].name ?? "";
-    adress.value = users[0].address ?? "No tengo dirección";
+    address.value = users[0].address ?? "No tengo dirección";
+
+    _loadHouses();
+  }
+
+  _loadHouses() async {
+    try {
+      houses.value = await _houseRepository.getHouses(
+        token: "${_oRequestToken.requestToken}",
+      );
+
+      print("Houses: ${houses.length}");
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

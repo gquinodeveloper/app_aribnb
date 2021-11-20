@@ -9,7 +9,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: AspectRatio(
-        aspectRatio: 16 / 7.5,
+        aspectRatio: 16 / 5,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -53,7 +53,7 @@ class _SliverAppBar extends StatelessWidget {
                       alignment: PlaceholderAlignment.middle,
                     ),
                     TextSpan(
-                      text: "${_.adress}",
+                      text: "${_.address}",
                       style: Theme.of(context).textTheme.button?.copyWith(
                           color: AppTheme.blueDark,
                           fontWeight: FontWeight.w600),
