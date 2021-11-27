@@ -1,5 +1,6 @@
 import 'package:app_airbnb/app/core/theme/app_theme.dart';
 import 'package:app_airbnb/app/global/button_navigator.dart';
+import 'package:app_airbnb/app/modules/detail/detail_page.dart';
 import 'package:app_airbnb/app/modules/home/home_controller.dart';
 import 'package:app_airbnb/app/modules/home/widgets/category.dart';
 import 'package:app_airbnb/app/modules/home/widgets/header.dart';

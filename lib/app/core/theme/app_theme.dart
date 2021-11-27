@@ -2,6 +2,7 @@ import 'dart:ui' show Color;
 
 class AppTheme {
   static final Color background = Color.fromRGBO(240, 241, 248, 1.0);
+  static final Color white = Color.fromRGBO(240, 241, 248, 1.0);
   static final Color blueDark = Color(0xFF143656);
   static final Color blue = Color(0xFF13497B);
   static final Color blueOpacity = Color(0xFF225C92);

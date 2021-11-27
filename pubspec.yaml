@@ -32,6 +32,7 @@ dependencies:
   flutter_svg: ^0.22.0
   dio: ^4.0.1
   flutter_secure_storage: ^4.2.1
+  card_swiper: ^1.0.4
 
 dev_dependencies:
   flutter_test:
